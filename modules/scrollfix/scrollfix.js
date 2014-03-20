@@ -33,8 +33,10 @@ angular.module('ui.scrollfix',[]).directive('uiScrollfix', ['$window', function 
           offset = iebody.scrollTop;
         }
         if (!elm.hasClass('ui-scrollfix') && offset > attrs.uiScrollfix) {
+          scope.$emit('ui-scrollfix', {'added': true, 'element': elm});
           elm.addClass('ui-scrollfix');
         } else if (elm.hasClass('ui-scrollfix') && offset < attrs.uiScrollfix) {
+          scope.$emit('ui-scrollfix', {'added': false, 'element': elm});
           elm.removeClass('ui-scrollfix');
         }
       }
